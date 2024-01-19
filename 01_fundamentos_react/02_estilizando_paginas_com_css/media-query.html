@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pseudo classe</title>
+    <style>
+        body{
+            background-color: #0000FF
+        }
+        .flex {
+            display: flex;
+        }
+
+        .item {
+            width: 80px;
+            height: 80px;
+            background-color: #8A2BE2FF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            margin: 10px;
+            padding: 10px;
+        }
+
+        .item:hover {
+            background-color: #FF0000;
+            cursor: pointer;
+        }
+
+        .item:first-child:hover, .item:last-child:hover {
+            background-color: #00EE00;
+        }
+
+        input:focus {
+            color: #FF0000;
+            background-color: #CCCC;
+        }
+        @media (max-width: 450px) {
+            body{
+                background-color: #00EE00
+            }
+            .flex{
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+<hr>
+<h1>Pseudo classe</h1>
+<div class="flex">
+    <div class="item">a</div>
+    <div class="item">b</div>
+    <div class="item">c</div>
+    <div class="item">e</div>
+    <div class="item">f</div>
+</div>
+<div>
+    <label for="name">Nome: </label>
+    <input type="text" id="name" name="Nome"></div>
+</body>
+</html>
