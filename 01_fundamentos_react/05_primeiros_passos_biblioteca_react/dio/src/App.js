@@ -1,7 +1,10 @@
-function App({nome}) {
+import Button from "./components/Button";
+
+function App() {
     return (
         <div className="App">
-            Ola React {nome}
+            <h1>Ola React</h1>
+            <Button title={"Entrar"}/>
         </div>
     );
 }
