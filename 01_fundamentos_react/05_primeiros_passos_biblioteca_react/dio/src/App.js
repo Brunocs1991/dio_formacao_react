@@ -1,9 +1,9 @@
-function App() {
-  return (
-    <div className="App">
-     Ola React
-    </div>
-  );
+function App({nome}) {
+    return (
+        <div className="App">
+            Ola React {nome}
+        </div>
+    );
 }
 
 export default App;
