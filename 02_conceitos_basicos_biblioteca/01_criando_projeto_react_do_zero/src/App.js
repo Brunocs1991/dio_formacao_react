@@ -1,13 +1,20 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 
 const App = () => {
-    const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    const [usuarios, setUsuarios] = useState(["Pablo", "José", "Manoel"]);
+
+    useEffect(()=>{
+        setTimeout(()=>{
+            setUsuarios([...usuarios, "Bruno"])
+        },3000)
+    }, [])
+
     return (
         <div className="App">
             <h1> Hello DIO!</h1>
-            {arr.map(item => {
-                return <p key={item}>  5 * {item}  = {5 * item}</p>
-            })}
+            {usuarios.map((item) =>(
+                <p key={item}>{item}</p>
+            ))}
         </div>
     );
 };
