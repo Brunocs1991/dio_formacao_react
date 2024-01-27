@@ -13,6 +13,15 @@ const Index = () => {
                         <input name="usuario" placeholder="@username"/>
                         <button type="submit">Buscar</button>
                     </div>
+                    <div className="perfil">
+                        <img src="https://avatars.githubusercontent.com/u/43798994?v=4" className="profile" alt="imagem de perfil" />
+                        <div>
+                            <h3>Bruno Costa e Silva</h3>
+                            <span>@Brunocs1991</span>
+                            <p>Descricao</p>
+                        </div>
+                    </div>
+                    <hr/>
                 </div>
             </div>
         </div>
