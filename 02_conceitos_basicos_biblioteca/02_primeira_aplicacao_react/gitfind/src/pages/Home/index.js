@@ -1,6 +1,7 @@
 import Header from "../../components/Header";
 import background from '../../assets/background.png'
 import './styles.css'
+import ItemList from "../../components/ItemList";
 
 const Index = () => {
     return (
@@ -22,6 +23,12 @@ const Index = () => {
                         </div>
                     </div>
                     <hr/>
+                    <div>
+                        <h4 className={"repositorio"}>Repositorios</h4>
+                        <ItemList description="Teste1" title="Teste de descricao"/>
+                        <ItemList description="Teste1" title="Teste de descricao"/>
+                        <ItemList description="Teste1" title="Teste de descricao"/>
+                    </div>
                 </div>
             </div>
         </div>
