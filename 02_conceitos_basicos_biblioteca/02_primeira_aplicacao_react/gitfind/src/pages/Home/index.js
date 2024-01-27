@@ -1,9 +1,31 @@
 import Header from "../../components/Header";
 import background from '../../assets/background.png'
 import './styles.css'
+import {useState} from "react";
 import ItemList from "../../components/ItemList";
 
 const Index = () => {
+
+    const [user, setUser] = useState('');
+    const [currentUser, setCurrentUser] = useState(null)
+    const [repos, setRepos] = useState(null)
+
+    const handleGetSate = async () => {
+        setCurrentUser(null)
+        setRepos(null)
+        const userData = await fetch(`https://api.github.com/users/${user}`)
+        const newUser = await userData.json()
+        if (newUser.name) {
+            const {avatar_url, name, bio, login} = newUser
+            setCurrentUser({avatar_url, name, bio, login})
+        }
+        const reposData = await fetch(`https://api.github.com/users/${user}/repos`)
+        const newRepos = await reposData.json()
+        if (newRepos.length) {
+            setRepos(newRepos)
+        }
+    }
+
     return (
         <div className="App">
             <Header/>
@@ -11,24 +33,33 @@ const Index = () => {
                 <img src={background} className="background" alt="background app"/>
                 <div className="info">
                     <div>
-                        <input name="usuario" placeholder="@username"/>
-                        <button type="submit">Buscar</button>
+                        <input name="usuario" placeholder="@username" value={user}
+                               onChange={event => setUser(event.target.value)}/>
+                        <button type="submit" onClick={handleGetSate}>Buscar</button>
                     </div>
-                    <div className="perfil">
-                        <img src="https://avatars.githubusercontent.com/u/43798994?v=4" className="profile" alt="imagem de perfil" />
+                    {currentUser?.name ? (
+                        <>
+                            <div className="perfil">
+                                <img src={currentUser.avatar_url} className="profile"
+                                     alt="imagem de perfil"/>
+                                <div>
+                                    <h3>{currentUser.name}</h3>
+                                    <span>@{currentUser.login}</span>
+                                    <p>{currentUser.bio}</p>
+                                </div>
+                            </div>
+                            <hr/>
+                        </>
+                    ) : null}
+                    {repos?.length ? (
                         <div>
-                            <h3>Bruno Costa e Silva</h3>
-                            <span>@Brunocs1991</span>
-                            <p>Descricao</p>
+                            <h4 className={"repositorio"}>Repositorios</h4>
+                            {repos.map(repo => (
+                                <ItemList description={repo.description} title={repo.name} key={repo.id}/>
+                            ))}
                         </div>
-                    </div>
-                    <hr/>
-                    <div>
-                        <h4 className={"repositorio"}>Repositorios</h4>
-                        <ItemList description="Teste1" title="Teste de descricao"/>
-                        <ItemList description="Teste1" title="Teste de descricao"/>
-                        <ItemList description="Teste1" title="Teste de descricao"/>
-                    </div>
+
+                    ) : null}
                 </div>
             </div>
         </div>
