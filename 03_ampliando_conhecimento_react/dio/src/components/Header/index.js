@@ -2,7 +2,7 @@ import React from "react";
 import {BuscarInputContainer, Container, Input, Menu, MenuRight, Row, Wrapper} from "./styles";
 import Button from "../Button";
 
-import logo from '../assets/logo-dio.png'
+import logo from '../../assets/logo-dio.png'
 
 const Header = () => {
     return (
