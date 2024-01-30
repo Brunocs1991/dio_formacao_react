@@ -1,33 +1,43 @@
 import React from "react";
-import {BuscarInputContainer, Container, Input, Menu, MenuRight, Row, Wrapper} from "./styles";
-import Button from "../Button";
+import {BuscarInputContainer, Container, Input, Menu, MenuRight, Row, UserPicture, Wrapper} from "./styles";
 
 import logo from '../../assets/logo-dio.png'
+import PropTypes from "prop-types";
+import Button from "../Button";
 
-const Header = () => {
+const Header = ({autenticado = false}) => {
     return (
         <Wrapper>
             <Container>
                 <Row>
                     <img src={logo} alt="Logo da dio"/>
-                    <BuscarInputContainer>
-                        <Input placeholder="Buscar..."/>
-                    </BuscarInputContainer>
-                    <Menu>
-                        Live code
-                    </Menu>
-                    <Menu>
-                        Global
-                    </Menu>
+                    {autenticado ? (
+                        <>
+                            <BuscarInputContainer>
+                                <Input placeholder="Buscar..."/>
+                            </BuscarInputContainer>
+                            <Menu> Live Code </Menu>
+                            <Menu> Global </Menu>
+                        </>
+                    ) : null}
+
                 </Row>
-                <Row>
-                    <MenuRight href={"#"}>Home</MenuRight>
-                    <Button onClick={() =>{}} title="entrar"/>
-                    <Button onClick={() =>{}} title="cadrastar"/>
-                </Row>
+                {autenticado ? (
+                    <UserPicture src="https://avatars.githubusercontent.com/u/43798994?v=4" alt="logo user"/>
+                ) : (
+                    <Row>
+                        <MenuRight href={"#"}>Home</MenuRight>
+                        <Button onClick={() => {
+                        }} title="entrar"/>
+                        <Button onClick={() => {
+                        }} title="cadrastar"/>
+                    </Row>
+                )}
             </Container>
         </Wrapper>
     )
 }
-
+Header.propTypes = {
+    autenticado: PropTypes.bool
+}
 export {Header}

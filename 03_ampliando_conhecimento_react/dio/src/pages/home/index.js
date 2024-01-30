@@ -3,8 +3,13 @@ import {Container, TextContent, Title, TitleHighLight} from "./styles";
 
 import bannerImage from "../../assets/banner.png"
 import Button from "../../components/Button";
+import {useNavigate} from "react-router-dom";
 
 const Home = () => {
+    const navigate = useNavigate()
+    const handleClickSignin = () =>{
+        navigate("/login")
+    }
     return (
         <>
             <Header/>
@@ -20,7 +25,7 @@ const Home = () => {
                         Domine as tecnologias utilizadas pelas empresas mais inovadoras do mundo e encare seu novo
                         desafio profissional, evoluindo em comunidade com os melhores experts.
                     </TextContent>
-                    <Button onClick={() =>{}} title="Comenar" variant="secondary"/>
+                    <Button onClick={handleClickSignin} title="Comenar" variant="secondary"/>
                 </div>
                 <div>
                     <img src={bannerImage} alt="Imagem Princial"/>
